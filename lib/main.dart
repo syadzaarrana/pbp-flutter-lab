@@ -127,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: Padding(
             padding: const EdgeInsets.only(left: 40, right: 10, bottom: 15),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               textDirection: TextDirection.rtl,
               children: [
@@ -135,7 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
-                Expanded(child: Container()),
                 if (_counter != 0)
                   FloatingActionButton(
                     onPressed: _decrementCounter,
