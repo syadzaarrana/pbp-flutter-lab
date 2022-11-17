@@ -1,3 +1,5 @@
+import 'package:counter_7/page/budget_form.dart';
+import 'package:counter_7/page/budget_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -87,6 +89,46 @@ class _MyHomePageState extends State<MyHomePage> {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
+        ),
+        // Menambahkan drawer menu
+        drawer: Drawer(
+          child: Column(
+            children: [
+              // Menambahkan clickable menu
+              ListTile(
+                title: const Text('counter_7'),
+                onTap: () {
+                  // Route menu ke halaman utama
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const MyHomePage(title: 'Program Counter')),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Tambah Budget'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyFormPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Data Budget'),
+                onTap: () {
+                  // Route menu ke halaman to do
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BudgetPage()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
