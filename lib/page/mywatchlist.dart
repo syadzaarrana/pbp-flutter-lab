@@ -127,42 +127,77 @@ class _WatchlistPageState extends State<WatchlistPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Card(
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        width: 0.8,
-                                        color: (snapshot.data![index].fields
-                                                    .watched ==
-                                                "Watched")
-                                            ? Colors.greenAccent
-                                            : Colors.redAccent,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          width: 0.8,
+                                          color: (snapshot.data![index].fields
+                                                      .watched ==
+                                                  "Watched")
+                                              ? Colors.greenAccent
+                                              : Colors.redAccent,
+                                        ),
                                       ),
-                                    ),
-                                    child: InkWell(
-                                        splashColor: Colors.blue.withAlpha(30),
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    DetailPage(
-                                                        info: snapshot
-                                                            .data![index]
-                                                            .fields)),
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(15),
-                                          child: Container(
-                                              alignment: Alignment.centerLeft,
-                                              width: double.infinity,
-                                              child: Text(
-                                                "${snapshot.data![index].fields.title}",
-                                                style: const TextStyle(
-                                                  fontSize: 16.0,
-                                                ),
-                                              )),
-                                        )),
-                                  ),
+                                      child: InkWell(
+                                          splashColor:
+                                              Colors.blue.withAlpha(30),
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DetailPage(
+                                                          info: snapshot
+                                                              .data![index]
+                                                              .fields)),
+                                            );
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(15),
+                                            child: Container(
+                                                alignment: Alignment.centerLeft,
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    Checkbox(
+                                                        value: (snapshot
+                                                                    .data![
+                                                                        index]
+                                                                    .fields
+                                                                    .watched ==
+                                                                "Watched")
+                                                            ? true
+                                                            : false,
+                                                        onChanged: ((value) {
+                                                          setState(() {
+                                                            if (snapshot
+                                                                    .data![
+                                                                        index]
+                                                                    .fields
+                                                                    .watched ==
+                                                                "Watched") {
+                                                              snapshot
+                                                                      .data![index]
+                                                                      .fields
+                                                                      .watched =
+                                                                  "Not Watched";
+                                                            } else {
+                                                              snapshot
+                                                                      .data![index]
+                                                                      .fields
+                                                                      .watched =
+                                                                  "Watched";
+                                                            }
+                                                          });
+                                                        })),
+                                                    Text(
+                                                      "${snapshot.data![index].fields.title}",
+                                                      style: const TextStyle(
+                                                        fontSize: 16.0,
+                                                      ),
+                                                    )
+                                                  ],
+                                                )),
+                                          ))),
                                 ],
                               ),
                             )),
